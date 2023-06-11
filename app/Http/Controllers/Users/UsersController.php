@@ -73,7 +73,7 @@ class UsersController extends Controller
         
         if($request->id == null){
            // $obj->notify(new UserLoginDetails($obj, $password));
-           $this->generateQrCode($obj->id);
+        //    $this->generateQrCode($obj->id);
           }
 
     }
@@ -100,9 +100,7 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-    //     $user = User::findOrFail($request->id);
-    //     $obj = parent::saveModel($request, $this->model, 'uploads/users-images/');
-    //     $this->updateOrCreateAddress($request);
+      //
     }
 
     public function destroy( $id)
