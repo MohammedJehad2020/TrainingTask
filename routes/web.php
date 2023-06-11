@@ -26,10 +26,6 @@ Route::group([
     'prefix' => LaravelLocalization::setLocale(),
 ], function () {
 
-// Route::get('/users', function () {
-//     return view('users');
-// })->middleware(['auth', 'verified'])->name('users');
-
 Route::middleware(['auth', 'checkUser'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -39,21 +35,8 @@ Route::middleware(['auth', 'checkUser'])->group(function () {
 
     Route::resource('users', UsersController::class);
     Route::post('/delete-users', [UsersController::class, "del_ids"])->name("users.del_ids");
-    
-    Route::get('qrcode-with-image', function () {
-  
-        $image = QrCode::format('png')
-                         ->merge(public_path('images/1644463030.png'), 0.5, true)
-                         ->size(500)
-                         ->errorCorrection('H')
-                         ->generate('A simple example of QR code!');
-  
-        return response($image)->header('Content-type','image/png');
-});
-    
 });
 
 require __DIR__.'/auth.php';
-
 
 });
